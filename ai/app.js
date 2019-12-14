@@ -3,10 +3,12 @@ let stats = {
 	X : 0,
 	D : 0
 }
+
 function changeMove(move) {
 	if (move === "O" ) return "X"
 	return "O"		
 }
+
 function newBoard() {
 	let board   = []
 	for (let i = 0; i <= 8; i++) board.push({val:""})
@@ -14,6 +16,7 @@ function newBoard() {
 }
 
 let currentMove = "O"
+let difficulty = "Easy"
 let board = newBoard()
 let permitted = true
 
@@ -23,16 +26,17 @@ function clicked(cellNumber) {
  		board[cellNumber].val = currentMove
 		currentMove = changeMove(currentMove)
 		let winner = checkWin(board)
- 		if (winner == "") { 
-			let count = 0
-			for (var i = 0; i < board.length; i++) if(board[i].val) count++
-			if (count == 9 ) {
+ 		if (winner == "") {   
+			if (checkDraw()) {
  		 		permitted = false
  		 		stats.D++ 
  				document.querySelector(".statsBody .D").innerText = stats.D
  		 		document.querySelector(".result").innerText = "Draw!"
 				document.querySelector(".new").style.display = "block"
 			}	
+			else if (currentMove == "X") {
+				nextMove()
+			}
  	    }
 
  		else{ 
