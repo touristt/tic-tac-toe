@@ -68,12 +68,18 @@ function checkWin() {
 	if (board[6].val !="" && (board[6].val == board[4].val ) && (board[6].val == board[2].val))   return board[6].val+"642"
  	return ""
  }
-
+function checkDraw() {
+	let count = 0
+	for (var i = 0; i < board.length; i++) if(board[i].val) count++
+	if (count == 9 ) return true
+	return false
+}
  function newGame() {
  	permitted = true
  	board = newBoard()
- 	currentMove = document.querySelector("select").value
- 	document.querySelectorAll(".td").forEach(function(item, i) {
+ 	currentMove = "O"
+	difficulty = document.querySelector("select").value
+	 document.querySelectorAll(".td").forEach(function(item, i) {
  		 		item.style["margin-right"] = "5px", item.style["margin-bottom"] = "5px"
  		 		document.querySelector(".new").style.display = "none"
  		 		document.querySelector(".result").innerHTML = ``  
@@ -81,4 +87,19 @@ function checkWin() {
  		 	})
  }
 
- 
+ function nextMove() {
+	 if (difficulty == "Easy") {
+		 clicked(getRandomSpot())
+	 } else {
+		 
+	 }
+ }
+
+ function getRandomSpot() {
+	 let num = Math.floor(Math.random()*9)
+	 while (board[num].val) {
+		num = Math.floor(Math.random()*9)
+	 }
+	 console.log(num)
+	 return num
+ }
