@@ -46,12 +46,10 @@ const clicked = cellNumber => {
  		 		if ((i !=  winner[1]) && (i != winner[2]) && (i != winner[3])) item.innerHTML = '<span class="cell"></span>'
  		 	})
 		}
-		 
  	}
-	
 }
 
-function checkWin() {
+const checkWin = () => {
 	// three horizontals
  	if (board[0].val !="" && (board[0].val == board[1].val ) && (board[0].val == board[2].val))   return board[0].val+"012"
  	if (board[3].val !="" && (board[3].val == board[4].val ) && (board[3].val == board[5].val))   return board[3].val+"345"
@@ -66,25 +64,25 @@ function checkWin() {
  	return ""
  }
 
-function checkComplete() { 
+const checkComplete = () => { 
 	for (var i = 0; i < board.length; i++) if(!board[i].val) return false
 	return true 
 }
 
-function newGame() {
+const newGame = () => {
  	permitted = true
- 	board = newBoard()
+ 	board = newBoard([])
  	currentMove = "O"
 	difficulty = document.querySelector("select").value
-	 document.querySelectorAll(".td").forEach(function(item, i) {
- 		 		item.style["margin-right"] = "5px", item.style["margin-bottom"] = "5px"
- 		 		document.querySelector(".new").style.display = "none"
- 		 		document.querySelector(".result").innerHTML = ``  
- 		 		item.innerHTML = '<span class="cell"></span>'
- 		 	})
+	document.querySelectorAll(".td").forEach(function(item, i) {
+ 	 		item.style["margin-right"] = "5px", item.style["margin-bottom"] = "5px"
+ 	 		document.querySelector(".new").style.display = "none"
+ 	 		document.querySelector(".result").innerHTML = ``  
+ 	 		item.innerHTML = '<span class="cell"></span>'
+ 	 	})
  }
 
-function nextMove() {
+const nextMove = () => {
 	if (difficulty == "Easy")  clicked(getRandomSpot())
 	else  
 	if (difficulty == "Medium") {
@@ -94,11 +92,16 @@ function nextMove() {
 				board[i].val = "X"
 				let moveVal = minimax(board,false)
 				board[i].val = ""
-				if (moveVal > -1) arr.push(i)
-				console.log(arr)
+				console.log(arr);				
+				if(arr.length<2) arr.push(i) 
+				else 
+					if (moveVal > -1){
+					arr.shift()
+					arr.push(i)
+				}
 			}
 		}
-		clicked(arr[Math.floor(Math.random()*arr.length)])
+		clicked(arr[random(arr.length)])
 	}
 	else{
 		let bestVal = -1000
@@ -116,39 +119,34 @@ function nextMove() {
 		}
 		clicked(bestMove)
 		}
- }
+}
 
- function getRandomSpot() {
-	 let num = Math.floor(Math.random()*9)
-	 while (board[num].val) {
-		num = Math.floor(Math.random()*9)
-	 }
-	 console.log(num)
-	 return num
- } 
- function minimax(board,isMax) {
-	 let score 
-	 if (checkWin()[0] == "X") score = 1
-	 if (checkWin()[0] == "O") score = -1
-	 if(score == 1) return 1
-	 if(score == -1) return -1
-	 if(checkComplete()) return 0
-	 if(isMax){
+const random = num => Math.floor(Math.random()*num)
+
+const getRandomSpot = () => {
+	let num = random(9)
+	while (board[num].val) num = random(9)
+	return num
+} 
+
+const minimax = (board,isMax) => { 
+	if (checkWin()[0] == "X") return 1
+	if (checkWin()[0] == "O") return -1
+	if(checkComplete()) return 0
+	if(isMax){
 		let best = -1000
 		for (let i = 0; i < board.length; i++) {
 			if (!board[i].val) {
 				board[i].val = "X"
 				best = Math.max(best,minimax(board,!isMax))
 				board[i].val = ""
-			}
-			
+			}	
 		}
-	
 		return best
-	 }
-	 else{
-		 let best = 1000
-		 for (let i = 0; i < board.length; i++) {
+	}
+	else{
+		let best = 1000
+		for (let i = 0; i < board.length; i++) {
 			if (!board[i].val) {
 				board[i].val = "O"
 				best = Math.min(best,minimax(board,!isMax))
@@ -157,6 +155,5 @@ function nextMove() {
 			
 		}
 		return best
-	 }
-	 
- }
+	} 
+}
