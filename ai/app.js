@@ -4,29 +4,28 @@ let stats = {
 	D : 0
 }
 
-function changeMove(move) {
+const changeMove = move => {
 	if (move === "O" ) return "X"
-	return "O"		
+	return "O"	
 }
 
-function newBoard() {
-	let board   = []
+const newBoard = board =>{
 	for (let i = 0; i <= 8; i++) board.push({val:""})
 	return board
 }
 
 let currentMove = "O"
 let difficulty = "Easy"
-let board = newBoard()
+let board = newBoard([])
 let permitted = true
 
-function clicked(cellNumber) {
+const clicked = cellNumber => {
 	if(permitted  && !document.querySelectorAll(".cell")[cellNumber].innerText){
  		document.querySelectorAll(".cell")[cellNumber].innerText = currentMove
  		board[cellNumber].val = currentMove
 		currentMove = changeMove(currentMove)
 		let winner = checkWin(board)
- 		if (winner == "") {   
+ 		if (!winner) {   
 			if (checkComplete()) { //for checking draw
  		 		permitted = false
  		 		stats.D++ 
@@ -34,11 +33,9 @@ function clicked(cellNumber) {
  		 		document.querySelector(".result").innerText = "Draw!"
 				document.querySelector(".new").style.display = "block"
 			}	
-			else if (currentMove == "X") {
-				nextMove()
-			}
+			else if (currentMove == "X") nextMove()
  	    }
- 		else{ 
+ 		else{
  		 	permitted = false
  		 	stats[winner[0]]++
  		 	document.querySelector(`.statsBody .${winner[0]}`).innerText = stats[winner[0]]
