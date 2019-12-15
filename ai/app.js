@@ -38,22 +38,22 @@ function clicked(cellNumber) {
 				nextMove()
 			}
  	    }
-
  		else{ 
  		 	permitted = false
  		 	stats[winner[0]]++
  		 	document.querySelector(`.statsBody .${winner[0]}`).innerText = stats[winner[0]]
  		 	document.querySelectorAll(".td").forEach((item, i)=>{
- 		 		item.style["margin-right"] = "0px", item.style["margin-bottom"] = "0px"
+ 		 		item.style["margin-right"] = "0px", item.style["margin-bottom"] = "0px"		
  		 		document.querySelector(".new").style.display = "block"
  		 		document.querySelector(".result").innerHTML = `<span class="res">${winner[0]}</span> Winner!`  
  		 		if ((i !=  winner[1]) && (i != winner[2]) && (i != winner[3])) item.innerHTML = '<span class="cell"></span>'
  		 	})
-		  }
+		}
 		 
  	}
 	
 }
+
 function checkWin() {
 	// three horizontals
  	if (board[0].val !="" && (board[0].val == board[1].val ) && (board[0].val == board[2].val))   return board[0].val+"012"
@@ -68,13 +68,13 @@ function checkWin() {
 	if (board[6].val !="" && (board[6].val == board[4].val ) && (board[6].val == board[2].val))   return board[6].val+"642"
  	return ""
  }
-function checkDraw() {
-	let count = 0
-	for (var i = 0; i < board.length; i++) if(board[i].val) count++
-	if (count == 9 ) return true
-	return false
+
+function checkComplete() { 
+	for (var i = 0; i < board.length; i++) if(!board[i].val) return false
+	return true 
 }
- function newGame() {
+
+function newGame() {
  	permitted = true
  	board = newBoard()
  	currentMove = "O"
