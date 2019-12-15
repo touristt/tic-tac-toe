@@ -102,4 +102,38 @@ function checkDraw() {
 	 }
 	 console.log(num)
 	 return num
+ } 
+ function minimax(board,isMax) {
+	 let score 
+	 if (checkWin()[0] == "X") score = 1
+	 if (checkWin()[0] == "O") score = -1
+	 if(score == 1) return 1
+	 if(score == -1) return -1
+	 if(checkComplete()) return 0
+	 if(isMax){
+		let best = -1000
+		for (let i = 0; i < board.length; i++) {
+			if (!board[i].val) {
+				board[i].val = "X"
+				best = Math.max(best,minimax(board,!isMax))
+				board[i].val = ""
+			}
+			
+		}
+	
+		return best
+	 }
+	 else{
+		 let best = 1000
+		 for (let i = 0; i < board.length; i++) {
+			if (!board[i].val) {
+				board[i].val = "O"
+				best = Math.min(best,minimax(board,!isMax))
+				board[i].val = ""
+			}
+			
+		}
+		return best
+	 }
+	 
  }
