@@ -87,12 +87,38 @@ function checkDraw() {
  		 	})
  }
 
- function nextMove() {
-	 if (difficulty == "Easy") {
-		 clicked(getRandomSpot())
-	 } else {
-		 
-	 }
+function nextMove() {
+	if (difficulty == "Easy")  clicked(getRandomSpot())
+	else  
+	if (difficulty == "Medium") {
+		let arr = []
+		for (let i = 0; i < board.length; i++) {
+			if(!board[i].val){
+				board[i].val = "X"
+				let moveVal = minimax(board,false)
+				board[i].val = ""
+				if (moveVal > -1) arr.push(i)
+				console.log(arr)
+			}
+		}
+		clicked(arr[Math.floor(Math.random()*arr.length)])
+	}
+	else{
+		let bestVal = -1000
+		let bestMove = -1
+		for (let i = 0; i < board.length; i++) {
+			if(!board[i].val){
+				board[i].val = "X"
+				let moveVal = minimax(board,false)
+				board[i].val = ""
+				if(moveVal>bestVal){
+					bestMove = i
+					bestVal = moveVal
+				}
+			}
+		}
+		clicked(bestMove)
+		}
  }
 
  function getRandomSpot() {
