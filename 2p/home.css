@@ -117,3 +117,12 @@ select{
 	font-size: 18px;
 	display: flex;flex-direction: row;
 }
+.changeGame{
+	color:white;
+
+}
+.changeGame a{
+	text-decoration: none;
+    color: #0b2d4e;
+}
+}
