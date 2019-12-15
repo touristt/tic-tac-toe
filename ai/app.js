@@ -27,7 +27,7 @@ function clicked(cellNumber) {
 		currentMove = changeMove(currentMove)
 		let winner = checkWin(board)
  		if (winner == "") {   
-			if (checkDraw()) {
+			if (checkComplete()) { //for checking draw
  		 		permitted = false
  		 		stats.D++ 
  				document.querySelector(".statsBody .D").innerText = stats.D
