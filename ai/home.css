@@ -1,127 +1,125 @@
-*{  
-           margin:      0px;
-           padding:     0px;
-           box-sizing:  border-box;
- }
-
-body {        
-          width:       100%;
-          background:  #2196F3;
-          font-family: 'Montserrat', sans-serif;
-           }
-
-.wrapper{
-          width:   100%;
-          margin:    0;
-          overflow: auto;
-          display: flex;
-          flex-direction:column;
-         align-items: center;
-          margin-top: 2.5%;
-}
-.table{
-	display: flex;
-	flex-direction: column;
-	margin-top: 2.5%;
-}
-.row{
-	display: flex;
-	flex-direction: row;
-	
-}
-.td{
-		  width: 90px;
-		  height:  90px;
-		  color: #ffffff;
-    	  background: #1976D2;
-    	  padding: 25px;
-		  font-size: 30px;
-		  text-align: center;
-		  margin-right: 5px;
-		  margin-bottom: 5px;
-}
-.td:hover{
-		  cursor: pointer;
-		  }
-h1{
-	color: white;
-	font-weight: 100;
-	font-size: 50px;
-
-}		  
-.result{
-	font-size: 30px;
-	color:white;
-	margin-bottom: 20px;
-}
-.res{
-	font-size: 45px;
-}
-.new{
-	display: none;
-	margin-bottom: 20px;
-}
-button{
-	width: 270px;
-    padding: 12.5px;
-    color: #ffffff;
-    background: #009688;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-}
-.stats{
- 
-	display: flex;
-	flex-direction: column;
-	margin-top: 2.5%;
-}
-.statsHead{
-	display: flex;
-	flex-direction: row;
-}
-.statsHead .X{
-	font-size: 30px;
-}.statsHead .O{
-	font-size: 30px;
-}
-.statsBody{
-	display: flex;
-		flex-direction: row;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-.statsCell{
-		width: 90px;
-		  height:  90px;
-		  color: #ffffff;
-    	  background: #1976D2;
-    	  padding: 25px;
-		  font-size: 18px;
-		  text-align: center;
-		  margin-right: 5px;
-		  margin-bottom: 5px
+body {
+  width: 100%;
+  background: #2196f3;
+  font-family: "Montserrat", sans-serif;
 }
-.statsBody .statsCell{
-	font-size: 25px;
-}
-select{
-	width: 130px;
-   background: #1976d2;
-   padding-left: 7px;
-   color: white;
-   font-size: 14px;
-   border:none;
-}
-.drop{
-	color: white;
-	font-size: 18px;
-	display: flex;flex-direction: row;
-}
-.changeGame{
-	color:white;
 
+.wrapper {
+  width: 100%;
+  margin: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.5%;
 }
-.changeGame a{
-	text-decoration: none;
-    color: #0b2d4e;
+.table {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5%;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.td {
+  width: 90px;
+  height: 90px;
+  color: #ffffff;
+  background: #1976d2;
+  padding: 25px;
+  font-size: 30px;
+  text-align: center;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.td:hover {
+  cursor: pointer;
+}
+h1 {
+  color: white;
+  font-weight: 100;
+  font-size: 50px;
+}
+.result {
+  font-size: 30px;
+  color: white;
+  margin-bottom: 20px;
+}
+.res {
+  font-size: 45px;
+}
+.new {
+  display: none;
+  margin-bottom: 20px;
+}
+button {
+  width: 270px;
+  padding: 12.5px;
+  color: #ffffff;
+  background: #009688;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+.stats {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5%;
+}
+.statsHead {
+  display: flex;
+  flex-direction: row;
+}
+.statsHead .X {
+  font-size: 30px;
+}
+.statsHead .O {
+  font-size: 30px;
+}
+.statsBody {
+  display: flex;
+  flex-direction: row;
+}
+
+.statsCell {
+  width: 90px;
+  height: 90px;
+  color: #ffffff;
+  background: #1976d2;
+  padding: 25px;
+  font-size: 18px;
+  text-align: center;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.statsBody .statsCell {
+  font-size: 25px;
+}
+select {
+  width: 130px;
+  background: #1976d2;
+  padding-left: 7px;
+  color: white;
+  font-size: 14px;
+  border: none;
+}
+.drop {
+  color: white;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+}
+.changeGame {
+  color: white;
+}
+.changeGame a {
+  text-decoration: none;
+  color: #0b2d4e;
 }
